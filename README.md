@@ -25,6 +25,13 @@ Made to be usable by people who read little: every place in the app has its own 
 City Metro), holding a picture makes Penko say what it is, and every screen can be read aloud. Recorded voice packs in
 more languages can be added without code changes (see `docs/VOICE_PACKS.md`).
 
+## The Android app
+
+This repository is the web version. The Android app has the same lessons plus Penko's AI tutor, which runs entirely on
+the phone, with no internet: it explains "Why?" in a lesson and reads photos of receipts. The app works on a test
+phone, but it isn't publicly available yet: there's no download, and its Android project and AI model aren't in this
+repository. Publishing it on Google Play comes next.
+
 ## Privacy
 
 No accounts, no ads, no tracking. Progress stays in your own browser. The only thing ever sent is a message you choose
