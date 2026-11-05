@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <!-- What this page may talk to: itself, and only when the feedback form is opened, Turnstile and our gateway -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self' https://*.workers.dev; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Penko Cuentas Claras: matemáticas y dinero de todos los días con Penko. Gratis y de código abierto. / Maths and everyday money with Penko. Free and open source.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Penko Cuentas">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Penko Cuentas Claras</title>
+  <meta name="theme-color" content="#121A2E">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body style="background:#121A2E; margin:0">
+  <!-- A slow connection takes a while: this shows at once, and needs no reading -->
+  <style>
+    #splash { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+    #splash img { width: 128px; height: 128px; image-rendering: pixelated; }
+    #splash div { display: flex; gap: 10px; }
+    #splash i { width: 14px; height: 14px; border-radius: 50%; background: #F2C94C; opacity: .25; animation: wait 1.5s infinite; }
+    #splash i:nth-child(2) { animation-delay: .25s; }
+    #splash i:nth-child(3) { animation-delay: .5s; }
+    @keyframes wait { 40% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #splash i { animation: none; opacity: 1; } }
+  </style>
+  <div id="splash" role="status" aria-label="Cargando… / Loading…">
+    <img src="favicon.png" alt="">
+    <div aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
+  <noscript style="color:#E8ECF8; font:18px system-ui; display:block; padding:24px">Penko Cuentas Claras necesita JavaScript. / Penko Cuentas Claras needs JavaScript.</noscript>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

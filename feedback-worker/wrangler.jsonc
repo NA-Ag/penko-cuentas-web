@@ -1,0 +1,15 @@
+// The form's gateway. Secrets are not here: TURNSTILE_SECRET and SALT are set with `wrangler secret put`.
+{
+  "name": "penko-feedback",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGINS": "https://cuentas.penkosoftware.org",
+    "ALLOWED_HOSTS": "cuentas.penkosoftware.org"
+  },
+  // database_id: the one `wrangler d1 create penko-feedback` prints
+  "d1_databases": [{ "binding": "DB", "database_name": "penko-feedback", "database_id": "00000000-0000-0000-0000-000000000000" }],
+  "durable_objects": { "bindings": [{ "name": "GATE", "class_name": "Gate" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Gate"] }]
+}

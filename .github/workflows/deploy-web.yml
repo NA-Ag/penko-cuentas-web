@@ -1,0 +1,50 @@
+# Builds the web version (Flutter) and publishes it on GitHub Pages at https://cuentas.penkosoftware.org/
+# (custom domain set in the repo's Settings → Pages; the DNS CNAME record lives at IONOS).
+name: Deploy web version
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.5
+          cache: true
+
+      - run: flutter pub get
+
+      - run: flutter test
+
+      # Served at the root of its own subdomain, so the base path is "/". No CDN: every file comes from this site, so a
+      # visit tells nobody else, and web/index.html's Content-Security-Policy can hold it to that.
+      - run: flutter build web --release --no-wasm-dry-run --no-web-resources-cdn --base-href /
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+      - uses: actions/deploy-pages@v4
+        id: deployment

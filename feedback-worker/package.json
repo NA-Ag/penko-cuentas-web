@@ -1,0 +1,14 @@
+{
+  "name": "penko-feedback",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/clean.test.js test/csv.test.js",
+    "dev": "wrangler dev --port 8787 --ip 127.0.0.1",
+    "deploy": "wrangler deploy",
+    "export": "node tools/export.mjs --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.36.0"
+  }
+}
