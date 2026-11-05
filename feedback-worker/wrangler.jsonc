@@ -9,7 +9,7 @@
     "ALLOWED_HOSTS": "cuentas.penkosoftware.org"
   },
   // database_id: the one `wrangler d1 create penko-feedback` prints
-  "d1_databases": [{ "binding": "DB", "database_name": "penko-feedback", "database_id": "00000000-0000-0000-0000-000000000000" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "penko-feedback", "database_id": "08ce1113-1904-4dd4-934c-a19f04fe857a" }],
   "durable_objects": { "bindings": [{ "name": "GATE", "class_name": "Gate" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Gate"] }]
 }

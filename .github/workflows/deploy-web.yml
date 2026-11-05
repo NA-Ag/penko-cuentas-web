@@ -38,7 +38,11 @@ jobs:
 
       # Served at the root of its own subdomain, so the base path is "/". No CDN: every file comes from this site, so a
       # visit tells nobody else, and web/index.html's Content-Security-Policy can hold it to that.
-      - run: flutter build web --release --no-wasm-dry-run --no-web-resources-cdn --base-href /
+      # Both values are public: the survey's gateway, and Cloudflare Turnstile's site key (the secret stays in the gateway).
+      - run: >-
+          flutter build web --release --no-wasm-dry-run --no-web-resources-cdn --base-href /
+          --dart-define=FEEDBACK_URL=https://penko-feedback.penko-feedback.workers.dev
+          --dart-define=TURNSTILE_KEY=0x4AAAAAAF0aa0O-6n6LMdBE
 
       - uses: actions/configure-pages@v5
 
